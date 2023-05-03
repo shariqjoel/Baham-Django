@@ -1,0 +1,75 @@
+{% include 'header.html'%}
+
+<main>
+    <div class="container">
+        <table id="vehicles-table" class="display">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Vendor</th>
+                    <th>Models</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vehicle in vehicles %}
+                <tr>
+                    <td>{{ vehicle.model_id }}</td>
+                    <td>{{ vehicle.vendor }}</td>
+                    <td>{{ vehicle.model }}</td>
+                    <td>
+                        <button class="btn-edit" data-id="{{ vehicle.id }}">Edit</button>
+                        <button class="btn-delete" data-id="{{ vehicle.id }}">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button class="btn-add" onclick="location.href='/add-vehicle'">Add yours</button>
+    </div>
+</main>
+{% include 'footer.html'%}
+
+<style>
+    #vehicles-table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #vehicles-table th,
+    #vehicles-table td {
+        text-align: left;
+        padding: 8px;
+        border: 1px solid #ddd;
+    }
+
+    #vehicles-table th {
+        background-color: grey;
+        color: white;
+    }
+
+    .btn-edit,
+    .btn-delete,
+    .btn-add {
+        background-color: grey;
+        border: none;
+        color: white;
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .btn-delete {
+        background-color: #f44336;
+    }
+
+    .btn-edit:hover,
+    .btn-delete:hover,
+    .btn-add:hover {
+        opacity: 0.8;
+    }
+</style>

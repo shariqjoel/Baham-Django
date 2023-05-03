@@ -1,0 +1,79 @@
+{% include 'header.html' %}
+
+<main>
+  <div class="container">
+    <h1>Create Vehicle</h1>
+    <form method="POST" class="create-vehicle-form">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="vehicle-type">Vehicle Type:</label>
+        <select name="vehicle_type" id="vehicle_type" class="form-control">
+          {% for vehicle_type in vehicle_types %}
+            <option value="{{ vehicle_type }}">{{ vehicle_type }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="vendor">Vendor:</label>
+        <input type="text" name="vendor" id="vendor" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+  </div>
+</main>
+
+{% include 'footer.html' %}
+
+<style>
+  .container {
+    margin-top: 50px;
+  }
+  
+  h1 {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  form {
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 20px;
+
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  select,
+  input[type='text'] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+</style>
